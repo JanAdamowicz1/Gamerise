@@ -1,0 +1,104 @@
+body {
+    background-color: var(--senary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.changeshelf-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.changeshelf-container .game-image {
+    margin-top: 12vh;
+    width: 15vw;
+    height: 15vw;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.changeshelf-container h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--primary-color);
+}
+
+.changeshelf-container h2 {
+    margin-top: 2vh;
+    font-size: 4vh;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.changeshelf-container h3 {
+    margin-top: 1vh;
+    font-size: 2.5vh;
+    font-weight: 600;
+}
+
+.changeshelf-container hr {
+    margin-top: 1vh;
+    width: 30vw;
+    border: none;
+    border-top: 2px solid var(--primary-color);
+}
+
+.changeshelf-container .shelves-buttons-container {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    height: 70vh;
+    margin-top: 3vh;
+    width: 30vw;
+    justify-content: space-between;
+}
+
+.changeshelf-container .shelves-buttons-container .shelves-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.changeshelf-container .shelves-buttons-container .buttons-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1vh;
+}
+
+.changeshelf-container .shelves-buttons-container .shelves-container label {
+    color: var(--primary-color);
+    margin-bottom: 1vh;
+}
+
+.changeshelf-container .shelves-buttons-container .buttons-container input {
+    margin-bottom: 1.5vh;
+}
+
+.changeshelf-container .button {
+    position: absolute;
+    bottom: 15vh;
+    left: 50vw;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 600px) {
+    .changeshelf-container .game-image {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .changeshelf-container hr {
+        width: 80vw;
+    }
+
+    .changeshelf-container .shelves-buttons-container {
+        width: 80vw;
+    }
+
+    .changeshelf-container .button {
+        width: 50vw;
+    }
+}

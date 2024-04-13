@@ -1,0 +1,90 @@
+body {
+    background-color: var(--senary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.mygames-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+.mygames-container h2 {
+    position: fixed;
+    font-family: 'Roboto', sans-serif;
+    font-size: 4vh;
+    font-weight: 500;
+    color: var(--primary-color);
+    top: 11vh;
+    margin: 0;
+}
+
+.mygames-container hr {
+    position: fixed;
+    top: 15vh;
+    width: 30vw;
+    border: none;
+    border-top: 2px solid var(--primary-color);
+}
+
+.mygames-container .shelves-container {
+    display: flex;
+    justify-content: space-around;
+    overflow: auto;
+    height: 70vh;
+    margin-top: 20vh;
+}
+
+.mygames-container .shelf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33.33%;
+    padding-top: 0;
+}
+
+.mygames-container .shelf-title {
+    font-size: 3vh;
+    color: var(--primary-color);
+    margin-bottom: 1vh;
+}
+
+.mygames-container .games-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: auto;
+    height: 60vh;
+}
+
+.mygames-container .games-container > * {
+    margin: 10px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .mygames-container .shelves-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        overflow-y: auto;
+        max-height: 70vh;
+    }
+
+    .mygames-container .shelf {
+        width: 80vw;
+        max-height: 23vh;
+    }
+
+    .mygames-container hr {
+        width: 80vw;
+    }
+}
