@@ -1,0 +1,27 @@
+.game-options {
+    background-color: var(--septenary-color); /* Dodaj szare tło */
+    padding: 10px; /* Dodaj padding wokół przycisków */
+    display: flex; /* Użyj flexbox do rozmieszczenia przycisków */
+    flex-direction: column;
+    justify-content: space-between; /* Rozmieść przyciski równomiernie na osi poziomej */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.game-options .button {
+    margin: 10px; /* Dodaj margines wokół każdego przycisku */
+}
+
+@media (max-width: 600px) {
+    .game-options {
+        padding: 5px;
+        width: 80vw;
+        height: 18vh;
+    }
+
+    .game-options .button {
+        margin: 5px;
+        width: 75vw;
+        height: 7vh;
+    }
+}

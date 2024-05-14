@@ -1,0 +1,29 @@
+.search-bar input {
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-wrapper input {
+    flex-grow: 1;
+    padding-left: 30px; /* make sure this value is enough to show the icon */
+}
+
+.input-wrapper button {
+    margin-left: 1vw;
+}

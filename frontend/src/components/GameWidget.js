@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/GameWidget.css';
-import { FaThumbsUp } from 'react-icons/fa';
 import Button from "./Button";
 import {Link} from "react-router-dom";
 
-const GameWidget = ({ friendName, showChangeShelfButton }) => {
+const GameWidget = ({ game }) => {
+    const [imageSrc, setImageSrc] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        axios.get(`http://localhost:8080/images/${game.cover}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            responseType: 'blob'
+        })
+            .then(response => {
+                const blob = new Blob([response.data], {type: 'image/png'});
+                const imageSrc = URL.createObjectURL(blob);
+                setImageSrc(imageSrc);
+            })
+            .catch(err => console.log(err));
+    }, [game.cover]);
+
     return (
         <div className="game-widget">
-            <div className="upper_info">
-                <div className="game-status">{friendName} started playing</div>
-                <div className="game-date">2022-03-01</div>
-            </div>
-            <div className="bottom_info">
-                <img src="default_game.png" alt="Game" className="game-image" />
-                <div className="mid_info">
-                    <div className="game-title">The Witcher 3: Wild Hunt</div>
-                    <Link to="/changeshelf">
-                        {showChangeShelfButton && <Button className="button" text="Change shelf" />}
-                    </Link>
-                </div>
-                <div className="likes">
-                    <p>Like</p>
-                    <FaThumbsUp />
-                    <p>10</p>
-                </div>
-            </div>
+            {imageSrc && <img src={imageSrc} alt="Game" className="game-image" />}
+            <div className="game-title">{game.gameName}</div>
+            <Link to={`/chooseshelf/${game.gameId}`}>
+                <Button className="button" text="Add" />
+            </Link>
         </div>
     );
 };

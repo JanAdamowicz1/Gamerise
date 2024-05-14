@@ -2,50 +2,22 @@
     position: relative;
     background-color: var(--quinary-color);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 10px;
     margin: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     width: 45vw;
+    height: 16vh;
 }
 
-.game-widget .upper_info {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1vh;
-}
-
-.game-widget .bottom_info {
-    display: flex;
-    flex-direction: row;
-}
-
-.game-widget .bottom_info .likes{
-    position: absolute;
-    right: 2vw;
-    bottom: 1vh;
-    display: flex;
-    flex-direction: row;
-}
-
-.game-widget .bottom_info p{
-    margin: 0 0.5vw;
-    font-size: 2vh;
-}
-
-.game-widget .bottom_info svg{
-    color: var(--primary-color);
-    font-size: 2.5vh;
-}
-
-.game-image {
-    width: 100px;
-    height: 100px;
+.game-widget .game-image {
+    width: 16vh;
+    height: 16vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.game-title {
+.game-widget .game-title {
     margin-left: 1vw;
     font-size: 3vh;
     word-wrap: break-word;
@@ -53,49 +25,23 @@
     text-overflow: ellipsis;
 }
 
-.game-date {
-    position: absolute;
-    right: 2vw;
-    top: 1vh;
-}
-
-.game-likes {
-    align-self: flex-end;
-}
-
-game-widget,
-.game-status,
-.game-date,
-.game-title,
-.bottom_info p {
+.game-widget p {
     font-family: 'Roboto', sans-serif;
     font-weight: 550;
     color: var(--primary-color);
 }
 
-.game-widget .mid_info {
+.game-widget .button {
+    position: absolute;
+    right: 1vw;
+    bottom: 1vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100px;
+    flex-direction: row;
 }
 
-.game-widget .button {
-    margin-left: 1vw;
-    width: 15vw;
-    height: 5vh;
-}
 
 @media screen and (max-width: 600px) {
     .game-widget {
         width: 90vw;
-    }
-
-    .game-widget .button {
-        width: 37vw;
-        height: 4vh;
-        font-size: 2vh;
-        margin-left: 2vw;
-        align-items: center;
     }
 }

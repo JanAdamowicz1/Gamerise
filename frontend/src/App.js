@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-import HomePage from './components/HomePage';
-import MyGames from "./components/MyGames";
-import ChangeShelf from "./components/ChangeShelf";
+import SignIn from './views/SignIn';
+import SignUp from './views/SignUp';
+import HomePage from './views/HomePage';
+import MyGames from "./views/MyGames";
+import ChooseShelf from "./views/ChooseShelf";
+import Search from "./views/Search";
 
 function App() {
   // return (
@@ -35,7 +36,8 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/homepage" element={<HomePage />} />
                 <Route path="/mygames" element={<MyGames />} />
-                <Route path="/changeshelf" element={<ChangeShelf />} />
+                <Route path="/chooseshelf/:gameId" element={<ChooseShelf />} />
+                <Route path="/search" element={<Search />} />
             </Routes>
         </Router>
     );

@@ -16,7 +16,7 @@ body {
 }
 
 .changeshelf-container .game-image {
-    margin-top: 12vh;
+    margin-top: 14vh;
     width: 15vw;
     height: 15vw;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -79,7 +79,7 @@ body {
 
 .changeshelf-container .button {
     position: absolute;
-    bottom: 15vh;
+    bottom: 12vh;
     left: 50vw;
     transform: translateX(-50%);
 }

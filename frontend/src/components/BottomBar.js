@@ -18,10 +18,12 @@ const BottomBar = () => {
                     <p>My Games</p>
                 </div>
             </Link>
+            <Link to="/search">
             <div className="icon-container">
                 <FaSearch />
                 <p>Search</p>
             </div>
+            </Link>
             <div className="icon-container">
                 <FaBars />
                 <p>More</p>
