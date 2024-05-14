@@ -1,6 +1,9 @@
-package com.example.gamerise.model;
+package com.example.gamerise.api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "user_activity")
@@ -9,7 +12,7 @@ public class UserActivity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_activity_id")
-    private Long userActivityId;
+    private int userActivityId;
 
     @ManyToOne
     @JoinColumn(name = "user_game_id")
@@ -24,22 +27,25 @@ public class UserActivity {
     @Column(name = "activity_type")
     private String activityType;
 
+    @Column(name = "activity_date")
+    private LocalDate activityDate;
+
     public UserActivity() {
     }
 
-    public UserActivity(Long userActivityId, UserGame userGame, Integer likes, Integer userRating, String activityType) {
-        this.userActivityId = userActivityId;
+    public UserActivity(UserGame userGame, Integer likes, Integer userRating, String activityType, LocalDate activityDate) {
         this.userGame = userGame;
         this.likes = likes;
         this.userRating = userRating;
         this.activityType = activityType;
+        this.activityDate = activityDate;
     }
 
-    public Long getUserActivityId() {
+    public int getUserActivityId() {
         return userActivityId;
     }
 
-    public void setUserActivityId(Long userActivityId) {
+    public void setUserActivityId(int userActivityId) {
         this.userActivityId = userActivityId;
     }
 
@@ -74,4 +80,12 @@ public class UserActivity {
     public void setActivityType(String activityType) {
         this.activityType = activityType;
     }
+    public LocalDate getActivityDate() {
+        return activityDate;
+    }
+
+    public void setActivityDate(LocalDate activityDate) {
+        this.activityDate = activityDate;
+    }
+
 }

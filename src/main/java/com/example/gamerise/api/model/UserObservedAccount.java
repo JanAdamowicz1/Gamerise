@@ -1,4 +1,4 @@
-package com.example.gamerise.model;
+package com.example.gamerise.api.model;
 
 import jakarta.persistence.*;
 
@@ -9,7 +9,7 @@ public class UserObservedAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_observed_account_id")
-    private Long userObservedAccountId;
+    private int userObservedAccountId;
 
     @ManyToOne
     @JoinColumn(name = "observing_user_id")
@@ -22,17 +22,16 @@ public class UserObservedAccount {
     public UserObservedAccount() {
     }
 
-    public UserObservedAccount(Long userObservedAccountId, User observingUser, User observedUser) {
-        this.userObservedAccountId = userObservedAccountId;
+    public UserObservedAccount(User observingUser, User observedUser) {
         this.observingUser = observingUser;
         this.observedUser = observedUser;
     }
 
-    public Long getUserObservedAccountId() {
+    public int getUserObservedAccountId() {
         return userObservedAccountId;
     }
 
-    public void setUserObservedAccountId(Long userObservedAccountId) {
+    public void setUserObservedAccountId(int userObservedAccountId) {
         this.userObservedAccountId = userObservedAccountId;
     }
 

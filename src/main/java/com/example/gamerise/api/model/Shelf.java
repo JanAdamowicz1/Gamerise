@@ -1,4 +1,4 @@
-package com.example.gamerise.model;
+package com.example.gamerise.api.model;
 
 import jakarta.persistence.*;
 
@@ -11,7 +11,7 @@ public class Shelf {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shelf_id")
-    private Long shelfId;
+    private int shelfId;
 
     @Column(name = "shelf_name")
     private String shelfName;
@@ -22,16 +22,15 @@ public class Shelf {
     public Shelf() {
     }
 
-    public Shelf(Long shelfId, String shelfName) {
-        this.shelfId = shelfId;
+    public Shelf(String shelfName) {
         this.shelfName = shelfName;
     }
 
-    public Long getShelfId() {
+    public int getShelfId() {
         return shelfId;
     }
 
-    public void setShelfId(Long shelfId) {
+    public void setShelfId(int shelfId) {
         this.shelfId = shelfId;
     }
 

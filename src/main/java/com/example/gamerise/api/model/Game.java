@@ -1,4 +1,4 @@
-package com.example.gamerise.model;
+package com.example.gamerise.api.model;
 
 import jakarta.persistence.*;
 
@@ -11,7 +11,7 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "game_id")
-    private Long gameId;
+    private int gameId;
 
     @Column(name = "game_name")
     private String gameName;
@@ -25,17 +25,16 @@ public class Game {
     public Game() {
     }
 
-    public Game(Long gameId, String gameName, String cover) {
-        this.gameId = gameId;
+    public Game(String gameName, String cover) {
         this.gameName = gameName;
         this.cover = cover;
     }
 
-    public Long getGameId() {
+    public int getGameId() {
         return gameId;
     }
 
-    public void setGameId(Long gameId) {
+    public void setGameId(int gameId) {
         this.gameId = gameId;
     }
 

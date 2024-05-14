@@ -1,5 +1,8 @@
-package com.example.gamerise.model;
+package com.example.gamerise.api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,18 +14,21 @@ public class UserGame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_game_id")
-    private Long userGameId;
+    private int userGameId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIdentityReference(alwaysAsId = true)
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "game_id")
+    @JsonIdentityReference(alwaysAsId = true)
     private Game game;
 
     @ManyToOne
     @JoinColumn(name = "shelf_id")
+    @JsonIdentityReference(alwaysAsId = true)
     private Shelf shelf;
 
     @OneToMany(mappedBy = "userGame")
@@ -31,18 +37,17 @@ public class UserGame {
     public UserGame() {
     }
 
-    public UserGame(Long userGameId, User user, Game game, Shelf shelf) {
-        this.userGameId = userGameId;
+    public UserGame(User user, Game game, Shelf shelf) {
         this.user = user;
         this.game = game;
         this.shelf = shelf;
     }
 
-    public Long getUserGameId() {
+    public int getUserGameId() {
         return userGameId;
     }
 
-    public void setUserGameId(Long userGameId) {
+    public void setUserGameId(int userGameId) {
         this.userGameId = userGameId;
     }
 
