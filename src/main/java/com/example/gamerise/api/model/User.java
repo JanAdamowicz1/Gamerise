@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 import jakarta.persistence.*;
 
 @Data
@@ -35,11 +36,8 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "nickname")
+    private String nickname;
 
     @Column(name = "profile_picture")
     private String profilePicture;
@@ -85,20 +83,12 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     @Override

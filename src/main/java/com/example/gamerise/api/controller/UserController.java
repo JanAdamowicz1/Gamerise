@@ -1,14 +1,16 @@
 package com.example.gamerise.api.controller;
 
+import com.example.gamerise.api.dto.UserDto;
+import com.example.gamerise.api.model.Role;
 import com.example.gamerise.api.model.User;
 import com.example.gamerise.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +40,12 @@ public class UserController {
         return userService.findByUsername(userDetails.getUsername());
     }
 
+    @GetMapping("/role")
+    public Role getUserRole(@AuthenticationPrincipal UserDetails userDetails) {
+        User user = userService.findByUsername(userDetails.getUsername());
+        return user.getRole();
+    }
+
     @GetMapping("/all")
     public List<User> getAllUsers(){
         Optional userList = userService.getAllUsers();
@@ -47,16 +55,37 @@ public class UserController {
             return null;
         }
     }
-    @GetMapping("/add")
-    public String addUser(){
-        return "User Added";
+
+    @GetMapping("/search")
+    public List<UserDto> searchUsers(@RequestParam String query) {
+        return userService.searchUsers(query);
     }
-    @GetMapping("/update")
-    public String updateUser() {
-        return "User Updated";
-    }
+
     @GetMapping("/delete")
     public String deleteUser() {
         return "User Deleted";
+    }
+
+    @PostMapping("/uploadProfilePicture")
+    public ResponseEntity<String> uploadProfilePicture(@RequestParam("file") MultipartFile file,
+                                                       @AuthenticationPrincipal UserDetails userDetails) {
+        try {
+            userService.saveProfilePicture(userDetails.getUsername(), file);
+            User user = userService.findByUsername(userDetails.getUsername());
+            return ResponseEntity.ok(user.getProfilePicture());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating profile picture");
+        }
+    }
+
+    @GetMapping("/profilePicture")
+    public ResponseEntity<String> getProfilePicture(@RequestParam int userId) {
+        Optional<User> optionalUser = userService.getUserById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            return ResponseEntity.ok(user.getProfilePicture());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
     }
 }
