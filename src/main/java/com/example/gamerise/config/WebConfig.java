@@ -32,7 +32,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/profile-pictures/**")
-                .addResourceLocations("classpath:/static/profile-pictures/")
-                .setCacheControl(CacheControl.noCache());
+                .addResourceLocations("file:src/main/resources/static/profile-pictures/")
+                .setCachePeriod(0);
     }
 }

@@ -9,6 +9,7 @@ import Button from "../components/Button";
 const MyAccount = () => {
     const [user, setUser] = useState(null);
     const [profilePicture, setProfilePicture] = useState(null);
+    const [selectedFile, setSelectedFile] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -38,9 +39,14 @@ const MyAccount = () => {
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        console.log("Selected file", file);
+        setSelectedFile(file);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('file', selectedFile);
 
         const token = localStorage.getItem('token');
 
@@ -62,10 +68,13 @@ const MyAccount = () => {
     return (
         <div className="myaccount-container">
             <TopBar />
-            {profilePicture && <img src={profilePicture} alt="Profile picture" className="profile-picture" />}
-            <input type="file" className="fileInput" id="fileInput" onChange={handleFileChange} />
             <h3>{user ? user.nickname : 'Loading...'}</h3>
             <hr />
+            {profilePicture && <img src={profilePicture} alt="Profile picture" className="profile-picture" />}
+            <form onSubmit={handleSubmit}>
+                <input type="file" className="fileInput" id="fileInput" onChange={handleFileChange} />
+                <Button className="button" type="submit" value="Upload" text="Upload" />
+            </form>
             <BottomBar />
         </div>
     );

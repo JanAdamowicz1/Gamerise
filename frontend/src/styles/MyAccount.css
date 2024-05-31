@@ -16,7 +16,7 @@ body {
 }
 
 .myaccount-container .profile-picture {
-    margin-top: 14vh;
+    margin-top: 2vh;
     width: 15vw;
     height: 15vw;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -28,7 +28,7 @@ body {
     color: var(--primary-color);
     font-size: 4vh;
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 12vh;
 }
 
 .myaccount-container h2 {
@@ -43,11 +43,15 @@ body {
     border-top: 2px solid var(--primary-color);
 }
 
-.myaccount-container > .button {
-    position: absolute;
-    bottom: 15vh;
-    width: 15vw;
-    height: 8vh;
+.myaccount-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.myaccount-container form .button {
+    margin-top: 1vh;
 }
 
 .myaccount-container .fileInput {
@@ -68,6 +72,10 @@ body {
 
     .myaccount-container hr {
         width: 80vw;
+    }
+
+    .myaccount-container form .button {
+        width: 30vw
     }
 }
 
