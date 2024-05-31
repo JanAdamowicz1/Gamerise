@@ -22,7 +22,7 @@ class Search extends React.Component {
         return (
             <div className="search-container">
                 <TopBar />
-                <SearchBar onSearch={this.handleSearch} />
+                <SearchBar onSearch={this.handleSearch} placeholder="Search games..." searchType="games"/>
                 <div className="game-widgets">
                     {this.state.games.map((game, i) =>
                         <GameWidget key={i} game={game} showChangeShelfButton={false}/>

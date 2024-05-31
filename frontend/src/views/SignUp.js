@@ -11,10 +11,10 @@ class SignUp extends React.Component {
         super(props);
         this.state = {
             email: '',
-            firstName: '',
-            lastName: '',
+            nickname: '',
             password: '',
             confirmPassword: '',
+            role: 'USER',
             isRegistered: false
         };
     }
@@ -27,7 +27,7 @@ class SignUp extends React.Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
-        const { email, firstName, lastName, password, confirmPassword } = this.state;
+        const { email, nickname, password, confirmPassword, role } = this.state;
         if (password !== confirmPassword) {
             alert("Passwords do not match");
             return;
@@ -35,9 +35,9 @@ class SignUp extends React.Component {
         try {
             const response = await axios.post('http://localhost:8080/api/auth/register', {
                 email,
-                firstName,
-                lastName,
-                password
+                nickname,
+                password,
+                role
             });
             console.log(response.data);
             this.setState({ isRegistered: true });
@@ -63,10 +63,7 @@ class SignUp extends React.Component {
                             <StyledInput type="text" name="email" Icon={FaEnvelope} placeholder={"E-mail"} onChange={this.handleInputChange} />
                         </label>
                         <label>
-                            <StyledInput type="text" name="firstName" Icon={FaUser} placeholder={"First name"} onChange={this.handleInputChange} />
-                        </label>
-                        <label>
-                            <StyledInput type="text" name="lastName" Icon={FaUser} placeholder={"Last name"} onChange={this.handleInputChange} />
+                            <StyledInput type="text" name="nickname" Icon={FaUser} placeholder={"Nickname"} onChange={this.handleInputChange} />
                         </label>
                         <label>
                             <StyledInput type="password" name="password" Icon={FaKey} placeholder={"Password"} onChange={this.handleInputChange} />

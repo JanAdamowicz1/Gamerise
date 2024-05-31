@@ -4,7 +4,7 @@ import axios from 'axios';
 import Button from './Button';
 import '../styles/SearchBar.css';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch , placeholder = "Search...", searchType, nickname }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleChange = event => {
@@ -14,13 +14,23 @@ const SearchBar = ({ onSearch }) => {
     const handleSubmit = async event => {
         event.preventDefault();
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:8080/api/game/search?query=${searchTerm}`, {
+        let url;
+        if (searchType === 'games') {
+            url = `http://localhost:8080/api/game/search?query=${searchTerm}`;
+        } else if (searchType === 'accounts') {
+            url = `http://localhost:8080/api/user/search?query=${searchTerm}`;
+        }
+        const response = await axios.get(url, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log(response.data);
-        onSearch(response.data);
+        let data = response.data;
+        if (nickname) {
+            data = data.filter(account => account.nickname !== nickname);
+        }
+        console.log(data);
+        onSearch(data);
     };
 
     return (
@@ -30,7 +40,7 @@ const SearchBar = ({ onSearch }) => {
                     <FaSearch className="search-icon" />
                     <input
                         type="text"
-                        placeholder="Search..."
+                        placeholder={placeholder}
                         value={searchTerm}
                         onChange={handleChange}
                     />

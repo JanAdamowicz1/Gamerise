@@ -1,0 +1,89 @@
+.drawer {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 20vw;
+    height: 100vh;
+    background-color: var(--quaternary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+    border-radius: 15px 0 0 15px;
+}
+
+.drawer.open {
+    transform: translateX(0);
+}
+
+.drawer > .button:first-child {
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+    width: 2vw;
+    height: 2vw;
+    font-size: 2vw;
+    background-color: transparent;
+    box-shadow: 0 0 0 transparent;
+    color: var(--primary-color);
+}
+
+
+.drawer .button:not(:first-child) {
+    width: 15vw;
+    height: 7vh;
+    font-size: 3vh;
+    margin-top: auto;
+    margin-bottom: 2vh;
+}
+
+.drawer a .button {
+    width: 15vw;
+    height: 7vh;
+    font-size: 3vh;
+}
+
+.drawer .buttons-container {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawer .buttons-container .button{
+    margin-bottom: 2vh;
+}
+
+.drawer a.button {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media screen and (max-width: 600px) {
+    .drawer {
+        width: 80vw;
+        height: 100vh;
+        border-radius: 15px 0 0 15px;
+    }
+
+    .drawer > .button:first-child {
+        top: 2vh;
+        left: 1vh;
+        width: 2vw;
+        height: 2vw;
+        font-size: 10vw;
+    }
+
+    .drawer .button:not(:first-child) {
+        width: 60vw;
+    }
+
+    .drawer a .button {
+        width: 60vw;
+    }
+}

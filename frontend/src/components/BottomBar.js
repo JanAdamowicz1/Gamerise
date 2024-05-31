@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaHome, FaGamepad, FaSearch, FaBars } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import Drawer from './Drawer';
 import '../styles/BottomBar.css';
-import {Link} from "react-router-dom";
 
 const BottomBar = () => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const toggleDrawer = () => {
+        setDrawerOpen(!drawerOpen);
+    };
+
     return (
         <div className="bottom-bar">
             <Link to="/homepage">
@@ -19,15 +26,16 @@ const BottomBar = () => {
                 </div>
             </Link>
             <Link to="/search">
-            <div className="icon-container">
-                <FaSearch />
-                <p>Search</p>
-            </div>
+                <div className="icon-container">
+                    <FaSearch />
+                    <p>Search games</p>
+                </div>
             </Link>
-            <div className="icon-container">
+            <div className="icon-container" onClick={toggleDrawer}>
                 <FaBars />
                 <p>More</p>
             </div>
+            <Drawer isOpen={drawerOpen} toggleDrawer={toggleDrawer} />
         </div>
     );
 };

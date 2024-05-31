@@ -4,6 +4,7 @@ import '../styles/TopBar.css';
 
 const TopBar = () => {
     const [user, setUser] = useState(null);
+    const [profilePicture, setProfilePicture] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -15,16 +16,28 @@ const TopBar = () => {
         })
             .then(response => {
                 setUser(response.data);
+                axios.get(`http://localhost:8080/api/user/profilePicture?userId=${response.data.userId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                    .then(imageResponse => {
+                        const imageUrl = `http://localhost:8080/profile-pictures/${imageResponse.data}`;
+                        setProfilePicture(imageUrl);
+                    })
+                    .catch(error => {
+                        console.error("There was an error fetching the profile picture!", error);
+                    });
             })
             .catch(err => console.log(err));
     }, []);
 
     return (
         <div className="top-bar">
-            <img src="default_profile.png" alt="Profile" className="profile-pic" />
+            <img src={profilePicture} alt="Profile" className="profile-pic" />
             <div className="hello_container">
                 <p>Hello!</p>
-                {user && <p>{user.firstName} {user.lastName}</p>}
+                {user && <p>{user.nickname} </p>}
             </div>
         </div>
     );

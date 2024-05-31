@@ -3,7 +3,7 @@ import '../styles/ChooseShelf.css';
 import BottomBar from '../components/BottomBar';
 import TopBar from '../components/TopBar';
 import Button from "../components/Button";
-import {Link, useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import withAuth from "./withAuth";
 
@@ -14,11 +14,13 @@ const ChooseShelf = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [imageSrc, setImageSrc] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
+    const [rating, setRating] = useState(0);
     const { gameId } = useParams();
 
     useEffect(() => {
         console.log(`Game ID: ${gameId}`);
         const token = localStorage.getItem('token');
+        console.log("token: ", token);
 
         axios.get(`http://localhost:8080/api/game/get?gameId=${gameId}`, {
             headers: {
@@ -36,7 +38,7 @@ const ChooseShelf = () => {
                 });
             })
             .then(response => {
-                const blob = new Blob([response.data], {type: 'image/png'});
+                const blob = new Blob([response.data], { type: 'image/png' });
                 const imageSrc = URL.createObjectURL(blob);
                 setImageSrc(imageSrc);
             })
@@ -84,7 +86,8 @@ const ChooseShelf = () => {
             },
             shelf: {
                 shelfId: selectedShelf
-            }
+            },
+            userRating: selectedShelf === 3 ? rating : null
         };
 
         const existingUserGame = userGames.find(userGame => userGame.game.gameId === game.gameId);
@@ -148,6 +151,18 @@ const ChooseShelf = () => {
                     <input type="radio" id="played" name="shelf" value="played" onClick={() => setSelectedShelf(3)} />
                 </div>
             </div>
+            {selectedShelf === 3 && (
+                <div className="rating-container">
+                    <h3>Rate the game:</h3>
+                    <div className="stars">
+                        {[1, 2, 3, 4, 5].map(star => (
+                            <span key={star} className={`star ${rating >= star ? 'selected' : ''}`} onClick={() => setRating(star)}>
+                                ★
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )}
             <Link to="/mygames">
                 <Button className="button" type="submit" text="Save" onClick={handleSave} />
             </Link>

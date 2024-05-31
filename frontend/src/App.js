@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -8,26 +7,14 @@ import HomePage from './views/HomePage';
 import MyGames from "./views/MyGames";
 import ChooseShelf from "./views/ChooseShelf";
 import Search from "./views/Search";
+import Followed from "./views/Followed";
+import Followers from "./views/Followers";
+import FindAccounts from "./views/FindAccounts";
+import MyAccount from "./views/MyAccount";
+import AdminPanel from "./views/AdminPanel";
 
 function App() {
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
+
     return (
         <Router>
             <Routes>
@@ -38,6 +25,11 @@ function App() {
                 <Route path="/mygames" element={<MyGames />} />
                 <Route path="/chooseshelf/:gameId" element={<ChooseShelf />} />
                 <Route path="/search" element={<Search />} />
+                <Route path="/followed" element={<Followed />} />
+                <Route path="/followers" element={<Followers />} />
+                <Route path="/findaccounts" element={<FindAccounts />} />
+                <Route path="/myaccount" element={<MyAccount />} />
+                <Route path="/admin" element={<AdminPanel />} />
             </Routes>
         </Router>
     );

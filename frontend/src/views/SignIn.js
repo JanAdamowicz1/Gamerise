@@ -30,7 +30,6 @@ class SignIn extends React.Component {
                 email,
                 password
             });
-            console.log(response.data);
 
             localStorage.setItem('token', response.data.token);
 

@@ -31,7 +31,7 @@ body {
 
 .signup-container .signup-form h2 {
     margin-bottom: 1vh;
-    margin-top: 8vh;
+    margin-top: 4vh;
 }
 
 .signup-container h3{
@@ -80,7 +80,7 @@ body {
 }
 
 .signup-container .signup-form button {
-    margin-top: 4vh;
+    margin-top: 6vh;
     width: 12vw;
 }
 

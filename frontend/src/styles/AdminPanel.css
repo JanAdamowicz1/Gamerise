@@ -1,0 +1,80 @@
+body {
+    background-color: var(--senary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.admin-container h2, h3, p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 0;
+}
+
+.admin-container h2 {
+    font-size: 4vh;
+    margin-top: 11vh;
+}
+
+.admin-container h3 {
+    font-size: 2.5vh;
+}
+
+.admin-container hr {
+    width: 10vw;
+    border: none;
+    border-top: 2px solid var(--primary-color);
+    margin-top: 1vh;
+}
+
+.admin-container > hr {
+    width: 30vw;
+}
+
+.admin-container .add-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.admin-container .add-game-container hr {
+    width: 25vw;
+}
+
+.admin-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+}
+
+.admin-container .fileInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+}
+
+.admin-container .styled-input {
+    width: 30vw;
+}
+
+
+

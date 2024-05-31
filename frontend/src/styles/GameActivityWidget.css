@@ -87,8 +87,56 @@ game-activity-widget,
     height: 100px;
 }
 
+
+.game-activity-widget .star {
+    color: #ccc;
+    font-size: 20px;
+    margin-left: 4px;
+}
+
+.game-activity-widget .star-yellow {
+    fill: #999B19;
+}
+
+.game-activity-widget .star-gray {
+    fill: gray;
+}
+
+.game-activity-widget .star-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    bottom: 1vh;
+}
+
+.game-activity-widget .upper_info .stars {
+    margin-left: 3vh;
+}
+
+.game-activity-widget .likes {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.game-activity-widget .likes p {
+    margin: 0 5px;
+}
+
+.game-activity-widget .likes.liked .thumbs-up {
+    fill: #1F73D6;
+}
+
+.game-activity-widget .likes.liked p {
+    color: #1F73D6;
+}
+
 @media screen and (max-width: 600px) {
     .game-activity-widget {
-        width: 90vw;
+        width: 87vw;
+    }
+
+    .game-activity-widget .upper_info .stars {
+        margin-left: 1vh;
     }
 }

@@ -21,7 +21,7 @@
 
 .input-wrapper input {
     flex-grow: 1;
-    padding-left: 30px; /* make sure this value is enough to show the icon */
+    padding-left: 30px;
 }
 
 .input-wrapper button {

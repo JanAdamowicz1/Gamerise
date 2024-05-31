@@ -4,25 +4,36 @@ import '../styles/HomePage.css';
 import BottomBar from '../components/BottomBar';
 import TopBar from '../components/TopBar';
 import GameActivityWidget from '../components/GameActivityWidget';
-import withAuth from "./withAuth";
+import withAuth from './withAuth';
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userActivities: []
+            userActivities: [],
+            user: null
         };
     }
 
     componentDidMount() {
         const token = localStorage.getItem('token');
-        axios.get('http://localhost:8080/api/activity/all', {
+
+        axios.get(`http://localhost:8080/api/user/me`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
-                console.log(response.data);
+                this.setState({ user: response.data });
+
+                return axios.get(`http://localhost:8080/api/activity/observed`, {
+                    params: { userId: response.data.userId },
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+            })
+            .then(response => {
                 this.setState({userActivities: response.data});
             })
             .catch(err => console.log(err));

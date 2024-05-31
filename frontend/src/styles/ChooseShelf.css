@@ -17,8 +17,8 @@ body {
 
 .changeshelf-container .game-image {
     margin-top: 14vh;
-    width: 15vw;
-    height: 15vw;
+    width: 13vw;
+    height: 13vw;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -60,6 +60,7 @@ body {
 .changeshelf-container .shelves-buttons-container .shelves-container {
     display: flex;
     flex-direction: column;
+    font-size: 2vh;
 }
 
 .changeshelf-container .shelves-buttons-container .buttons-container {
@@ -82,6 +83,30 @@ body {
     bottom: 12vh;
     left: 50vw;
     transform: translateX(-50%);
+}
+
+.changeshelf-container .rating-container {
+    margin-top: 2vh;
+    margin-bottom: 20vh;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.changeshelf-container .rating-container .stars {
+    display: flex;
+    justify-content: center;
+}
+
+.changeshelf-container .rating-container .stars .star {
+    font-size: 3vh;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.changeshelf-container .rating-container .stars .star.selected {
+    color: #999B19;
 }
 
 @media screen and (max-width: 600px) {
