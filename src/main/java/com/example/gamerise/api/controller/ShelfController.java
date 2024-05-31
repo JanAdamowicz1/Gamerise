@@ -1,22 +1,29 @@
 package com.example.gamerise.api.controller;
 
+import com.example.gamerise.api.model.Shelf;
+import com.example.gamerise.service.ShelfService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/shelf")
 public class ShelfController {
-    @PostMapping("/{shelfId}/add")
-    public String addGameToShelf(@PathVariable int shelfId, @RequestParam int userId, @RequestParam int gameId) {
-        return "Game added to shelfName";
+    private final ShelfService shelfService;
+
+    @Autowired
+    public ShelfController(ShelfService shelfService) {
+        this.shelfService = shelfService;
     }
 
-    @DeleteMapping("/{shelfId}/remove")
-    public String removeGameFromShelf(@PathVariable int shelfId, @RequestParam int userId, @RequestParam int gameId) {
-        return "Game removed from shelfName";
+    @GetMapping("/{id}")
+    public String getShelfName(@PathVariable int id) {
+        Optional<Shelf> shelf = shelfService.getShelfById(id);
+        return shelf.map(Shelf::getShelfName)
+                .orElse(null);
     }
 
-    @GetMapping("/{shelfId}")
-    public String getGamesOnShelf(@PathVariable int shelfId, @RequestParam int userId) {
-        return "List of games on shelfName";
-    }
 }

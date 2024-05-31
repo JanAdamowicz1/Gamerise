@@ -1,12 +1,15 @@
 package com.example.gamerise.api.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_activity")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userActivityId")
 public class UserActivity {
 
     @Id
@@ -25,15 +28,17 @@ public class UserActivity {
     private Integer userRating;
 
     @Column(name = "activity_type")
-    private String activityType;
+    private Integer activityType;
 
     @Column(name = "activity_date")
     private LocalDate activityDate;
 
-    public UserActivity() {
-    }
+    @OneToMany(mappedBy = "userActivity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ActivityLike> activityLikes;
 
-    public UserActivity(UserGame userGame, Integer likes, Integer userRating, String activityType, LocalDate activityDate) {
+    public UserActivity() {}
+
+    public UserActivity(UserGame userGame, Integer likes, Integer userRating, Integer activityType, LocalDate activityDate) {
         this.userGame = userGame;
         this.likes = likes;
         this.userRating = userRating;
@@ -73,13 +78,14 @@ public class UserActivity {
         this.userRating = userRating;
     }
 
-    public String getActivityType() {
+    public Integer getActivityType() {
         return activityType;
     }
 
-    public void setActivityType(String activityType) {
+    public void setActivityType(Integer activityType) {
         this.activityType = activityType;
     }
+
     public LocalDate getActivityDate() {
         return activityDate;
     }
@@ -88,4 +94,11 @@ public class UserActivity {
         this.activityDate = activityDate;
     }
 
+    public Set<ActivityLike> getActivityLikes() {
+        return activityLikes;
+    }
+
+    public void setActivityLikes(Set<ActivityLike> activityLikes) {
+        this.activityLikes = activityLikes;
+    }
 }

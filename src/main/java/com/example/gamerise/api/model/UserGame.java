@@ -1,5 +1,6 @@
 package com.example.gamerise.api.model;
 
+import com.example.gamerise.api.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -31,8 +32,11 @@ public class UserGame {
     @JsonIdentityReference(alwaysAsId = true)
     private Shelf shelf;
 
-    @OneToMany(mappedBy = "userGame")
+    @OneToMany(mappedBy = "userGame", cascade = CascadeType.ALL)
     private List<UserActivity> userActivities;
+
+    @Transient
+    private Integer userRating; // Pole, które nie będzie przechowywane w bazie danych
 
     public UserGame() {
     }
@@ -73,5 +77,12 @@ public class UserGame {
 
     public void setShelf(Shelf shelf) {
         this.shelf = shelf;
+    }
+    public Integer getUserRating() {
+        return userRating;
+    }
+
+    public void setUserRating(Integer userRating) {
+        this.userRating = userRating;
     }
 }
