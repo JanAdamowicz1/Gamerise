@@ -13,6 +13,7 @@ function AdminPanel() {
     const navigate = useNavigate();
     const [gameTitle, setGameTitle] = useState('');
     const [gameCover, setGameCover] = useState(null);
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleTitleChange = (event) => {
         setGameTitle(event.target.value);
@@ -24,17 +25,27 @@ function AdminPanel() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!gameTitle || !gameCover) {
+            alert('Both title and cover must be provided');
+            return;
+        }
+
         const formData = new FormData();
-        formData.append('title', gameTitle);
+        const game = { gameName: gameTitle };
+
+        formData.append('game', new Blob([JSON.stringify(game)], { type: 'application/json' }));
         formData.append('cover', gameCover);
 
         try {
-            const response = await axios.post('http://localhost:8080/api/admin/addgame', formData, {
+            const response = await axios.post('http://localhost:8080/api/game/add', formData, {
                 headers: {
+                    'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
             console.log(response.data);
+            setSuccessMessage('Game added successfully');
         } catch (error) {
             console.error('Error adding game', error);
         }
@@ -48,7 +59,6 @@ function AdminPanel() {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
                 });
-                console.log('Response data:', response.data);
                 if (response.data !== 'ADMIN') {
                     navigate('/homepage');
                 }
@@ -70,7 +80,7 @@ function AdminPanel() {
                 <hr />
                 <form onSubmit={handleSubmit}>
                     <label>
-                        <StyledInput type="text" name="email" Icon={FaGamepad} placeholder={"Game title"} onChange={handleTitleChange} />
+                        <StyledInput type="text" name="title" Icon={FaGamepad} placeholder={"Game title"} onChange={handleTitleChange} />
                     </label>
                     <label>
                         <p>Game cover</p>
@@ -78,6 +88,7 @@ function AdminPanel() {
                     </label>
                     <Button className="button" type="submit" value="Add Game" text="Add"/>
                 </form>
+                {successMessage && <p>{successMessage}</p>}
             </div>
             <BottomBar />
         </div>
