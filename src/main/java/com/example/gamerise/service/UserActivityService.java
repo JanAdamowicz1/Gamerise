@@ -7,9 +7,7 @@ import com.example.gamerise.repository.UserObservedAccountRepository;
 import com.example.gamerise.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserActivityService {
@@ -53,6 +51,7 @@ public class UserActivityService {
             activities.addAll(userActivities);
         }
 
+        activities.sort(Comparator.comparing(UserActivity::getActivityDate).reversed());
         return activities;
     }
 
@@ -79,5 +78,13 @@ public class UserActivityService {
         UserActivity userActivity = userActivityRepository.findById(activityId).orElseThrow();
         User user = userRepository.findById(userId).orElseThrow();
         return activityLikeRepository.findByUserActivityAndUser(userActivity, user).isPresent();
+    }
+
+    public List<UserActivity> getActivitiesByUser(String username) {
+        User user = userRepository.findByEmail(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        List<UserActivity> activities = userActivityRepository.findAllByUserGame_User_UserId(user.getUserId());
+        activities.sort(Comparator.comparing(UserActivity::getActivityDate).reversed());
+        return activities;
     }
 }

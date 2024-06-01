@@ -12,7 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -87,5 +89,20 @@ public class UserController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
+    }
+
+    @PostMapping("/check")
+    public ResponseEntity<Map<String, Boolean>> checkUserExists(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        String nickname = request.get("nickname");
+
+        boolean emailExists = userService.emailExists(email);
+        boolean nicknameExists = userService.nicknameExists(nickname);
+
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("emailExists", emailExists);
+        response.put("nicknameExists", nicknameExists);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

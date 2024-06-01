@@ -5,7 +5,9 @@ import com.example.gamerise.service.UserActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.HashMap;
 import java.util.List;
@@ -78,8 +80,8 @@ public class UserActivityController {
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/{activityId}/delete")
-    public String deleteActivity(@PathVariable int activityId) {
-        return "Activity deleted";
+    @GetMapping("/me")
+    public List<UserActivity> getMyActivities(@AuthenticationPrincipal UserDetails userDetails) {
+        return userActivityService.getActivitiesByUser(userDetails.getUsername());
     }
 }
