@@ -33,7 +33,6 @@ body {
 }
 
 .admin-container hr {
-    width: 10vw;
     border: none;
     border-top: 2px solid var(--primary-color);
     margin-top: 1vh;
@@ -74,6 +73,25 @@ body {
 
 .admin-container .styled-input {
     width: 30vw;
+}
+
+@media (max-width: 600px) {
+
+    .admin-container > hr {
+        width: 80vw;
+    }
+
+    .admin-container .add-game-container hr {
+        width: 60vw;
+    }
+
+    .admin-container .styled-input {
+        width: 80vw;
+    }
+
+    .admin-container .button {
+        width: 30vw;
+    }
 }
 
 

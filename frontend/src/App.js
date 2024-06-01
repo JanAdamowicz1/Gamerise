@@ -12,6 +12,7 @@ import Followers from "./views/Followers";
 import FindAccounts from "./views/FindAccounts";
 import MyAccount from "./views/MyAccount";
 import AdminPanel from "./views/AdminPanel";
+import MyActivities from "./views/MyActivities";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/findaccounts" element={<FindAccounts />} />
                 <Route path="/myaccount" element={<MyAccount />} />
                 <Route path="/admin" element={<AdminPanel />} />
+                <Route path="/myactivities" element={<MyActivities />} />
             </Routes>
         </Router>
     );

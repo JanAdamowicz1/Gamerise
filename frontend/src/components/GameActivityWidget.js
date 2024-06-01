@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../styles/GameActivityWidget.css';
 import { FaThumbsUp, FaStar } from 'react-icons/fa';
 
-const GameActivityWidget = ({ activity }) => {
+const GameActivityWidget = ({ activity, canLike }) => {
     const [imageSrc, setImageSrc] = useState(null);
     const [username, setUsername] = useState('');
     const [shelfName, setShelfName] = useState('');
@@ -109,6 +109,8 @@ const GameActivityWidget = ({ activity }) => {
     }, [activity.userActivityId, userId]);
 
     const handleLike = async () => {
+        if (!canLike) return;
+
         try {
             const token = localStorage.getItem('token');
 
@@ -142,6 +144,8 @@ const GameActivityWidget = ({ activity }) => {
         return <div className="star-rating">{stars}</div>;
     };
 
+    const isOwner = userId === activity.userGame.user;
+
     return (
         <div className="game-activity-widget">
             <div className="upper_info">
@@ -156,7 +160,10 @@ const GameActivityWidget = ({ activity }) => {
                 <div className="mid_info">
                     <div className="game-title">{activity.userGame.game.gameName}</div>
                 </div>
-                <div className={`likes ${liked ? 'liked' : ''}`} onClick={handleLike}>
+                <div
+                    className={`likes ${!canLike || isOwner ? 'disabled' : ''} ${liked ? 'liked' : ''}`}
+                    onClick={!isOwner && canLike ? handleLike : null}
+                >
                     <p>Like</p>
                     <FaThumbsUp className="thumbs-up"/>
                     <p>{likes}</p>

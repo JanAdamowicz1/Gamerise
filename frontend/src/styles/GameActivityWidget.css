@@ -32,6 +32,7 @@
     flex-direction: row;
 }
 
+
 .game-activity-widget .bottom_info p{
     margin: 0 0.5vw;
     font-size: 2vh;
@@ -117,6 +118,10 @@ game-activity-widget,
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+.game-activity-widget .bottom_info .likes.disabled {
+    cursor: default;
 }
 
 .game-activity-widget .likes p {

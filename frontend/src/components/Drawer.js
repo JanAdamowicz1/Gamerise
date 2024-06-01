@@ -61,6 +61,9 @@ const Drawer = ({ isOpen, toggleDrawer }) => {
                 <Link to="/myaccount">
                     <Button  className="button" text="My account"></Button>
                 </Link>
+                <Link to="/myactivities">
+                    <Button  className="button" text="My activities"></Button>
+                </Link>
                 {role === 'ADMIN' && (
                     <Link to="/admin">
                         <Button className="button" text="Admin Panel" />

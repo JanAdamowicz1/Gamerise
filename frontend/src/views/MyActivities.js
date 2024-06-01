@@ -6,7 +6,7 @@ import TopBar from '../components/TopBar';
 import GameActivityWidget from '../components/GameActivityWidget';
 import withAuth from './withAuth';
 
-class HomePage extends React.Component {
+class MyActivities extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,15 +26,14 @@ class HomePage extends React.Component {
             .then(response => {
                 this.setState({ user: response.data });
 
-                return axios.get(`http://localhost:8080/api/activity/observed`, {
-                    params: { userId: response.data.userId },
+                return axios.get(`http://localhost:8080/api/activity/me`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
             })
             .then(response => {
-                this.setState({ userActivities: response.data});
+                this.setState({ userActivities: response.data });
             })
             .catch(err => console.log(err));
     }
@@ -45,7 +44,7 @@ class HomePage extends React.Component {
                 <TopBar />
                 <div className="game-widgets">
                     {this.state.userActivities.map((activity, i) =>
-                        <GameActivityWidget key={i} activity={activity} canLike={true}/>
+                        <GameActivityWidget key={i} activity={activity} canLike={false} />
                     )}
                 </div>
                 <BottomBar />
@@ -54,4 +53,4 @@ class HomePage extends React.Component {
     }
 }
 
-export default withAuth(HomePage);
+export default withAuth(MyActivities);

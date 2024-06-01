@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/SignUp.css';
-import {FaEnvelope, FaKey, FaUser} from 'react-icons/fa';
+import { FaEnvelope, FaKey, FaUser } from 'react-icons/fa';
 import StyledInput from '../components/StyledInput';
 import Button from '../components/Button';
-import {Link, Navigate} from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
 
 class SignUp extends React.Component {
@@ -28,17 +28,35 @@ class SignUp extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         const { email, nickname, password, confirmPassword, role } = this.state;
+
         if (password !== confirmPassword) {
             alert("Passwords do not match");
             return;
         }
+
         try {
+            const checkResponse = await axios.post('http://localhost:8080/api/user/check', {
+                email,
+                nickname
+            });
+
+            if (checkResponse.data.emailExists) {
+                alert("Email already exists");
+                return;
+            }
+
+            if (checkResponse.data.nicknameExists) {
+                alert("Nickname already exists");
+                return;
+            }
+
             const response = await axios.post('http://localhost:8080/api/auth/register', {
                 email,
                 nickname,
                 password,
                 role
             });
+
             console.log(response.data);
             this.setState({ isRegistered: true });
         } catch (error) {
