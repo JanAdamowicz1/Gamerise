@@ -18,12 +18,16 @@ Discover, rate, and share the games you play with your friends!
 
 ## Main views
 <div align="center">
+<img src="frontend/public/signup.png">
+<img src="frontend/public/signin.png">
 <img src="frontend/public/homepage.png">
 <img src="frontend/public/mygames.png">
 <img src="frontend/public/search.png">
 <img src="frontend/public/chooseshelf.png">
 <img src="frontend/public/followers.png">
 <img src="frontend/public/myaccount.png">
+<img src="frontend/public/signup_mobile.png">
+<img src="frontend/public/signin_mobile.png">
 <img src="frontend/public/homepage_mobile.png">
 <img src="frontend/public/mygames_mobile.png">
 <img src="frontend/public/search_mobile.png">
