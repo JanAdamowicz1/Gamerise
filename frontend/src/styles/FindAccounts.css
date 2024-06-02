@@ -1,19 +1,4 @@
-body {
-    background-color: var(--senary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.accounts-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
+@import 'global.css';
 
 .accounts-container .search-bar {
     display: flex;

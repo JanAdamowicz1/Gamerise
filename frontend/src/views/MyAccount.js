@@ -66,7 +66,7 @@ const MyAccount = () => {
     };
 
     return (
-        <div className="myaccount-container">
+        <div className="myaccount-container container">
             <TopBar />
             <h3>{user ? user.nickname : 'Loading...'}</h3>
             <hr />

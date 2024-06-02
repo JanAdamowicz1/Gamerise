@@ -69,7 +69,7 @@ class MyGames extends React.Component {
 
     render() {
         return (
-            <div className="mygames-container">
+            <div className="mygames-container container">
                 <TopBar />
                 <h2>MY GAMES</h2>
                 <hr />

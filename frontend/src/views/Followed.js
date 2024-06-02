@@ -58,7 +58,7 @@ class Followed extends React.Component {
 
     render() {
         return (
-            <div className="follow-container">
+            <div className="follow-container container">
                 <TopBar />
                 <div className="follow-list">
                     <h2>FOLLOWED ACCOUNTS</h2>

@@ -1,27 +1,4 @@
-body {
-    background-color: var(--senary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.admin-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.admin-container h2, h3, p {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    color: var(--primary-color);
-    margin-bottom: 0;
-}
+@import 'global.css';
 
 .admin-container h2 {
     font-size: 4vh;
@@ -33,13 +10,7 @@ body {
 }
 
 .admin-container hr {
-    border: none;
-    border-top: 2px solid var(--primary-color);
     margin-top: 1vh;
-}
-
-.admin-container > hr {
-    width: 30vw;
 }
 
 .admin-container .add-game-container {

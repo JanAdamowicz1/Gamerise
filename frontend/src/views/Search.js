@@ -20,7 +20,7 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div className="search-container">
+            <div className="search-container container">
                 <TopBar />
                 <SearchBar onSearch={this.handleSearch} placeholder="Search games..." searchType="games"/>
                 <div className="game-widgets">

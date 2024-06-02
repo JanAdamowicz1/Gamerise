@@ -64,7 +64,7 @@
     color: inherit;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .drawer {
         width: 80vw;
         height: 100vh;
@@ -74,9 +74,9 @@
     .drawer > .button:first-child {
         top: 2vh;
         left: 1vh;
-        width: 2vw;
-        height: 2vw;
-        font-size: 10vw;
+        width: 2vh;
+        height: 2vh;
+        font-size: 5vh;
     }
 
     .drawer .button:not(:first-child) {

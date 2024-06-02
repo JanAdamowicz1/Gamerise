@@ -71,7 +71,7 @@ function AdminPanel() {
     }, [navigate]);
 
     return (
-        <div className="admin-container">
+        <div className="admin-container container">
             <TopBar />
             <h2>ADMIN PANEL</h2>
             <hr />

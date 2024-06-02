@@ -1,37 +1,17 @@
-body {
-    background-color: var(--senary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.changeshelf-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
+@import 'global.css';
 
 .changeshelf-container .game-image {
     margin-top: 14vh;
-    width: 13vw;
-    height: 13vw;
+    width: 25vh;
+    height: 25vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.changeshelf-container h2, h3 {
-    font-family: 'Roboto', sans-serif;
-    color: var(--primary-color);
-}
 
 .changeshelf-container h2 {
     margin-top: 2vh;
     font-size: 4vh;
     font-weight: 500;
-    margin-bottom: 0;
 }
 
 .changeshelf-container h3 {
@@ -42,9 +22,6 @@ body {
 
 .changeshelf-container hr {
     margin-top: 1vh;
-    width: 30vw;
-    border: none;
-    border-top: 2px solid var(--primary-color);
 }
 
 .changeshelf-container .shelves-buttons-container {
@@ -53,7 +30,7 @@ body {
     overflow: auto;
     height: 70vh;
     margin-top: 3vh;
-    width: 30vw;
+    width: 40vw;
     justify-content: space-between;
 }
 
@@ -66,7 +43,6 @@ body {
 .changeshelf-container .shelves-buttons-container .buttons-container {
     display: flex;
     flex-direction: column;
-    margin-top: 1vh;
 }
 
 .changeshelf-container .shelves-buttons-container .shelves-container label {
@@ -78,7 +54,7 @@ body {
     margin-bottom: 1.5vh;
 }
 
-.changeshelf-container .button {
+.changeshelf-container .button-container .button {
     position: absolute;
     bottom: 12vh;
     left: 50vw;
@@ -109,7 +85,7 @@ body {
     color: #999B19;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
     .changeshelf-container .game-image {
         width: 50vw;
         height: 50vw;

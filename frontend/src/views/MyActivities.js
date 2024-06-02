@@ -40,7 +40,7 @@ class MyActivities extends React.Component {
 
     render() {
         return (
-            <div className="home-container">
+            <div className="home-container container">
                 <TopBar />
                 <div className="game-widgets">
                     {this.state.userActivities.map((activity, i) =>

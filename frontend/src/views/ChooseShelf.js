@@ -133,7 +133,7 @@ const ChooseShelf = () => {
     }
 
     return (
-        <div className="changeshelf-container">
+        <div className="changeshelf-container container">
             <TopBar />
             {imageSrc && <img src={imageSrc} alt="Game" className="game-image" />}
             <h2>{game.gameName}</h2>
@@ -163,9 +163,11 @@ const ChooseShelf = () => {
                     </div>
                 </div>
             )}
-            <Link to="/mygames">
-                <Button className="button" type="submit" text="Save" onClick={handleSave} />
-            </Link>
+            <div className="button-container">
+                <Link to="/mygames">
+                    <Button className="button" type="submit" text="Save" onClick={handleSave} />
+                </Link>
+            </div>
             <BottomBar />
         </div>
     );

@@ -75,7 +75,7 @@ class FindAccounts extends React.Component {
 
     render() {
         return (
-            <div className="accounts-container">
+            <div className="accounts-container container">
                 <TopBar />
                 <SearchBar onSearch={this.handleSearch} placeholder="Search accounts..." searchType="accounts" nickname={this.state.user?.nickname}/>
                 <div className="account-list">

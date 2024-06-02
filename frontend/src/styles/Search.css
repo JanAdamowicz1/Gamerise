@@ -1,19 +1,4 @@
-body {
-    background-color: var(--senary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
+@import 'global.css';
 
 .search-container .search-bar {
     display: flex;
@@ -35,7 +20,7 @@ body {
     margin: 1vh 0 8vh;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .search-container .game-widgets {
         grid-template-columns: repeat(1, 1fr);
     }

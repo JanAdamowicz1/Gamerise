@@ -23,7 +23,6 @@ body {
 }
 
 .signup-container h2{
-    font-family: 'Roboto', sans-serif;
     font-size: 30px;
     font-weight: 300;
     color: white;
@@ -35,11 +34,9 @@ body {
 }
 
 .signup-container h3{
-    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: 300;
     margin-top: 0;
-    color: var(--primary-color)
 }
 
 .signup-container .logo-container {
@@ -136,7 +133,6 @@ body {
     }
 
     .signup-container .signup-form h2 {
-        margin-bottom: 0;
         margin-top: 0;
     }
 }

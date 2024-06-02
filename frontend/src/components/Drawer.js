@@ -27,19 +27,9 @@ const Drawer = ({ isOpen, toggleDrawer }) => {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/logout', {}, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            });
-
-            if (response.status === 200) {
                 localStorage.removeItem('token');
                 toggleDrawer();
                 navigate('/signin');
-            } else {
-                console.error('Logout failed');
-            }
         } catch (error) {
             console.error('Logout failed', error);
         }

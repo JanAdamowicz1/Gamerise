@@ -1,46 +1,21 @@
-body {
-    background-color: var(--senary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.myaccount-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
+@import 'global.css';
 
 .myaccount-container .profile-picture {
     margin-top: 2vh;
-    width: 15vw;
-    height: 15vw;
+    width: 30vh;
+    height: 30vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 50%;
 }
 
 .myaccount-container h2, h3 {
-    font-family: 'Roboto', sans-serif;
-    color: var(--primary-color);
     font-size: 4vh;
-    margin-bottom: 0;
     margin-top: 12vh;
 }
 
 .myaccount-container h2 {
     text-align: center;
     font-weight: 300;
-}
-
-.myaccount-container hr {
-    color: var(--primary-color);
-    width: 25vw;
-    border: none;
-    border-top: 2px solid var(--primary-color);
 }
 
 .myaccount-container form {
@@ -63,7 +38,7 @@ body {
     border-radius: 15px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .myaccount-container .profile-picture {
         width: 50vw;
