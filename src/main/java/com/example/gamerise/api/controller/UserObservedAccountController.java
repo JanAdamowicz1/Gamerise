@@ -1,7 +1,6 @@
 package com.example.gamerise.api.controller;
 
 import com.example.gamerise.api.dto.UserDto;
-import com.example.gamerise.api.model.Game;
 import com.example.gamerise.api.model.User;
 import com.example.gamerise.api.model.UserObservedAccount;
 import com.example.gamerise.publisher.RabbitMQProducer;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user-observed-account")

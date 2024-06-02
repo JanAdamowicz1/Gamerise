@@ -1,9 +1,6 @@
 package com.example.gamerise.api.model;
 
-import com.example.gamerise.api.dto.UserDto;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;

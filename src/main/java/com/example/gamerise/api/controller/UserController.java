@@ -63,10 +63,6 @@ public class UserController {
         return userService.searchUsers(query);
     }
 
-    @GetMapping("/delete")
-    public String deleteUser() {
-        return "User Deleted";
-    }
 
     @PostMapping("/uploadProfilePicture")
     public ResponseEntity<String> uploadProfilePicture(@RequestParam("file") MultipartFile file,

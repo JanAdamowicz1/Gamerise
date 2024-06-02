@@ -20,9 +20,6 @@ public class JwtService {
     @Value("${jwt.secret}")
     private String SECRET_KEY;
 
-    @Value("${jwt.rereshExpiration}")
-    private long refreshExpiration;
-
     @Value("${jwt.expiration}")
     private long jwtExpiration;
 
@@ -44,12 +41,6 @@ public class JwtService {
             UserDetails userDetails
     ) {
         return buildToken(extraClaims, userDetails, jwtExpiration);
-    }
-
-    public String generateRefreshToken(
-            UserDetails userDetails
-    ) {
-        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
     }
 
     private String buildToken(
